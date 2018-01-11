@@ -62,3 +62,7 @@ Feel free to contribute by:
 reported before creating a new one. Perhaps you can contribute to an already
 existing issue?
 * Solving issues and submitting code through Pull Requests to the 'master' branch or on a separate feature branch.
+
+# Mebis Configuration
+Since Backups of the H5P Libraries take so much time, they are turned of in the config.php
+$CFG->mod_hvp_backup_libraries = 0;
