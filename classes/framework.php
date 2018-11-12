@@ -1127,6 +1127,9 @@ class framework implements \H5PFrameworkInterface {
     public function updateContent($content, $contentmainid = null) {
         global $DB;
 
+        // +++ MBS-HACK (Andreas Wagner): Remove options for sending results to social networks (MBS-3402).
+        \mod_hvp\patch\patch_social_options::remove_social_options($content);
+
         if (!isset($content['disable'])) {
             $content['disable'] = \H5PCore::DISABLE_NONE;
         }
