@@ -1,9 +1,9 @@
 [submodule "library"]
 	path = library
 	url = https://gitlab.mebis.alp.dillingen.de/mebis-moodle/hacked/hvp_library.git
-[submodule "editor"]
-	path = editor
-	url = https://github.com/h5p/h5p-editor-php-library.git
 [submodule "reporting"]
 	path = reporting
 	url = https://github.com/h5p/h5p-php-report.git
+[submodule "editor"]
+	path = editor
+	url = https://gitlab.mebis.alp.dillingen.de/mebis-moodle/hacked/hvp_editor.git
