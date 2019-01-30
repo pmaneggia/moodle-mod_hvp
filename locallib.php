@@ -411,6 +411,8 @@ function hvp_content_upgrade_progress($libraryid) {
  *                to upgrade script
  */
 function hvp_get_library_upgrade_info($name, $major, $minor) {
+    global $CFG;
+
     $library = (object) array(
         'name' => $name,
         'version' => (object) array(
