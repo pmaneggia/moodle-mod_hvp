@@ -68,5 +68,6 @@ $formdata = (object) [
             'majorVersion' => 1,
             'minorVersion' => 19,
             'libraryId' => 83,
-        ]
+        ],
+        'metadata' => ''
 ];
