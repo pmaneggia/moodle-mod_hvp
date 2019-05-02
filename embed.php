@@ -50,7 +50,10 @@ if (!$course) {
 }
 
 try {
-    require_course_login($course, true, $cm, true, true);
+    // +++ MBS-HACK (Thomas Ludwig) - allow direct embed to mebis - Tafel (MBS-3901)
+    require_course_login($course, true, $cm, true);
+    // require_course_login($course, true, $cm, true, true);
+    // --- MBS-HACK
 } catch (Exception $e) {
     $PAGE->set_pagelayout('embedded');
     $root = \mod_hvp\view_assets::getsiteroot();
