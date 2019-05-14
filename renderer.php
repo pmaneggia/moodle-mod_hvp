@@ -65,7 +65,19 @@ class mod_hvp_renderer extends plugin_renderer_base {
      * @param int $majorversion Major version of library
      * @param int $minorversion Minor version of library
      */
-    public function hvp_alter_semantics(&$semantics, $name, $majorversion, $minorversion) {
+    public function hvp_alter_semantics(&$semantics, $name, $majorversion, $minorversion) {        
+    // +++ MBS-HACK (Sebastian Rettig) - Allow HTML editor widget in H5P-Blanks to add tables.  (#3908)
+        if ($name === 'H5P.Blanks' &&
+            $majorversion == 1 &&
+            $minorversion == 11
+        ) {
+            if (isset($semantics[2]) &&
+                isset($semantics[2]->field) &&
+                isset($semantics[2]->field->tags)) { 
+                array_push($semantics[2]->field->tags, 'table');
+            }            
+        }
+    // --- MBS-HACK
     }
 
     /**
