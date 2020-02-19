@@ -69,7 +69,7 @@ class mod_hvp_renderer extends plugin_renderer_base {
     // +++ MBS-HACK (Sebastian Rettig) - Allow HTML editor widget in H5P-Blanks to add tables.  (#3908)
         if ($name === 'H5P.Blanks' &&
             $majorversion == 1 &&
-            $minorversion == 11
+            $minorversion >= 11
         ) {
             if (isset($semantics[2]) &&
                 isset($semantics[2]->field) &&
