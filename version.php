@@ -29,3 +29,9 @@ $plugin->cron      = 0;
 $plugin->component = 'mod_hvp';
 $plugin->maturity  = MATURITY_STABLE;
 $plugin->release   = '1.26.1';
+
+// +++ MBS-HACK (Andre Scherl)
+$plugin->dependencies = array(
+    'local_mbslicenseinfo'  => 2016121200
+);
+// --- MBS-HACK
