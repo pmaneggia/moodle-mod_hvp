@@ -3,7 +3,7 @@
 	url = ../../../mebis-moodle/hacked/hvp_library.git
 [submodule "reporting"]
 	path = reporting
-	url = ../../../mebis-moodle/hacked/hvp_reporting.git
+	url = https://github.com/h5p/h5p-php-report.git
 [submodule "editor"]
 	path = editor
 	url = ../../../mebis-moodle/hacked/hvp_editor.git
