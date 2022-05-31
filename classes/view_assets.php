@@ -331,7 +331,10 @@ class view_assets {
                  " src=\"about:blank\"" .
                  " frameBorder=\"0\"" .
                  " scrolling=\"no\"" .
-                 " title=\"{$title}\">" .
+                 // +++ MBS-HACK (Paola Maneggia) Fix problem accessing the microphone and camera in FireFox (MBS-5313 + MBS-6427).
+                 " title=\"{$title}\"" .
+                 " allow=\"microphone *; camera *;\">" .
+                 // --- MBS-HACK
                  "</iframe>" .
                  "</div>";
         }
