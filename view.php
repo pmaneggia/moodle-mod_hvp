@@ -99,15 +99,8 @@ if ($hashub) {
 
 $view->outputview();
 
-// fhüb - 23.11.2016 - add licenseinfo.
-$select = 'contextid ='.$context->id. ' and component = "mod_hvp" and '
-        . 'filepath IN ("/images/", "/videos/", "/audios/") and filearea <> "draft"';
-$result = $DB->get_records_select('files', $select);
-if (!empty($result)) {
-    $renderer = $PAGE->get_renderer('local_mbslicenseinfo');
-    echo $renderer->render_collapse_button('h5p-licenseinfo');
-    echo $renderer->render_licenseinfo_collapsearea('h5p-licenseinfo', $result, $context->id);
-}
-// fhüb - 23.11.2016 - add licenseinfo.
+// +++ MBS-HACK (Franziska Hübler) - Display files with licenseinfo (unified with MBS-5721).
+echo \local_mbs\hack\mod_hvp::display_licenseinfo_for_hvp($context->id, $id);
+// --- MBS-HACK
 
 echo $OUTPUT->footer();

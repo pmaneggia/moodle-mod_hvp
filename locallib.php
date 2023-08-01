@@ -210,8 +210,12 @@ function hvp_add_editor_assets($id = null, $mformid = null) {
       ),
       'ajaxPath' => "{$url}ajax.php?contextId={$context->id}&token={$editorajaxtoken}&action=",
       'libraryUrl' => $url . 'editor/',
-      'copyrightSemantics' => $contentvalidator->getCopyrightSemantics(),
-      'metadataSemantics' => $contentvalidator->getMetadataSemantics(),
+      // +++ MBS-HACK (Andre Scherl, Franziska Hübler) - Get our license semantics into the h5p editor (reimplemented with MBS-5721).
+      // 'copyrightSemantics' => $contentvalidator->getCopyrightSemantics(),
+      'copyrightSemantics' => \local_mbslicenseinfo\local\mbshvpcontentvalidator::getcopyrightsemantics($contentvalidator->h5pF),
+      // 'metadataSemantics' => $contentvalidator->getMetadataSemantics(),
+      'metadataSemantics' => \local_mbslicenseinfo\local\mbshvpcontentvalidator::getmetadatasemantics($contentvalidator->h5pF),
+      // --- MBS-HACK
       'assets' => $assets,
       // @codingStandardsIgnoreLine
       'apiVersion' => H5PCore::$coreApi,

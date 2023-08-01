@@ -30,8 +30,9 @@ $plugin->component = 'mod_hvp';
 $plugin->maturity  = MATURITY_STABLE;
 $plugin->release   = '1.26.1';
 
-// +++ MBS-HACK (Andre Scherl)
-$plugin->dependencies = array(
-    'local_mbslicenseinfo'  => 2016121200
-);
+// +++ MBS-HACK (Andre Scherl) - Use mebis license semantics in mod_hvp (modified with MBS-5721).
+$plugin->dependencies = [
+    'local_mbslicenseinfo'  => 2016121200,
+    'local_mbs' => 2023012704,
+];
 // --- MBS-HACK
