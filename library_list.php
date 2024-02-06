@@ -62,10 +62,28 @@ if ($hubon) {
 $numnotfiltered = $core->h5pF->getNumNotFiltered();
 $libraries = $core->h5pF->loadLibraries();
 
+// +++ MBS-HACK (Paola Maneggia) Restrict the choice of libraries - MBS-8618.
+// Create choose libraries form (only for the chosen libraries we load the setting).
+$chooselibrariesform = new \local_mbs\form\choose_mod_hvp_libraries_form(null, $libraries, 'post', '', ['class' => 'chooselibs'] );
+$chosenlibraries = [];
+// If form was submitted, add the selected elements.
+if ($chosenlibrariesdata = $chooselibrariesform->get_data()) {
+    $chosenlibraries = array_filter(
+        $libraries,
+        fn($key) => in_array(str_replace('.', '', $key), array_keys((array)$chosenlibrariesdata)),
+        ARRAY_FILTER_USE_KEY
+    );
+}
+// --- MBS-HACK
+
+
 // Add settings for each library.
 $settings = array();
 $i = 0;
-foreach ($libraries as $versions) {
+// +++ MBS-HACK (Paola Maneggia - MBS-8618).
+// foreach ($libraries as $versions) {
+foreach ($chosenlibraries as $versions) {
+// --- MBS-HACK
     foreach ($versions as $library) {
         $usage = $core->h5pF->getLibraryUsage($library->id, $numnotfiltered ? true : false);
         if ($library->runnable) {
@@ -139,6 +157,12 @@ if ($hubon) {
 // Upload Form.
 echo '<h3 class="h5p-admin-header">' . get_string('uploadlibraries', 'hvp') . '</h3>';
 $uploadform->display();
+
+// +++ MBS-HACK (Paola Maneggia MBS-8618).
+// Choose libraries whose settings are going to be loaded.
+echo '<h3 class="h5p-admin-header">' . get_string('choosemodhvplibrariesheading', 'local_mbs') . '</h3>';
+$chooselibrariesform->display();
+// --- MBS-HACK.
 
 // Installed Libraries List.
 echo '<h3 class="h5p-admin-header">' . get_string('installedlibraries', 'hvp')  . '</h3>';
