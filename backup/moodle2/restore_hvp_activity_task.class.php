@@ -60,7 +60,7 @@ class restore_hvp_activity_task extends restore_activity_task {
     static public function define_decode_contents() {
         $contents = array();
 
-        $contents[] = new restore_decode_content('hvp', array('intro'), 'hvp');
+        $contents[] = new restore_decode_content('hvp', array('intro', 'json_content'), 'hvp');
 
         return $contents;
     }
